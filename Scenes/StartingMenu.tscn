@@ -1,3 +1,22 @@
 [gd_scene format=3 uid="uid://dywjhbiic3bpi"]
 
+[ext_resource type="Texture2D" uid="uid://c7h53wjsge2ll" path="res://Assets/StartingMenuBG.jpg" id="1_pxkw3"]
+[ext_resource type="Script" uid="uid://ewhff2mhtvdo" path="res://Scripts/starting_menu.gd" id="1_rgq4t"]
+
 [node name="StartingMenu" type="Node2D" unique_id=1681848724]
+script = ExtResource("1_rgq4t")
+
+[node name="StartingMenuBg" type="Sprite2D" parent="." unique_id=901696060]
+position = Vector2(576, 320)
+scale = Vector2(1.9019607, 1.4093686)
+texture = ExtResource("1_pxkw3")
+
+[node name="CompScreen" type="RichTextLabel" parent="." unique_id=1537234732]
+offset_left = 63.0
+offset_top = 99.0
+offset_right = 727.0
+offset_bottom = 372.0
+bbcode_enabled = true
+scroll_active = false
+scroll_following = true
+metadata/_edit_use_anchors_ = true

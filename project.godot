@@ -16,7 +16,9 @@ config/features=PackedStringArray("4.6", "GL Compatibility")
 [file_customization]
 
 folder_colors={
-"res://Scenes/": "red"
+"res://Assets/": "pink",
+"res://Scenes/": "red",
+"res://Scripts/": "green"
 }
 
 [physics]
