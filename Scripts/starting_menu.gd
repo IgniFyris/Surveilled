@@ -2,13 +2,15 @@ extends Node2D
 
 @onready var comp_screen: RichTextLabel = $CompScreen
 
-var comp_text: String = "testing to my ass
+func _ready() -> void:
+	comp_text_display("testing to my ass
 im gonna kill everyone
 what is ths line brah
-"
-var text_array = comp_text.rsplit()
-
-func _ready() -> void:
+", comp_screen)
+	
+func comp_text_display(comp_text : String, comp_text_container : RichTextLabel):
+	var text_array = comp_text.rsplit()
+	
 	for i in text_array:
-		comp_screen.text = comp_screen.text + i
+		comp_text_container.text = comp_screen.text + i
 		await get_tree().create_timer(0.02).timeout
