@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://crm30o5eglfnr"]
+
+[ext_resource type="Script" uid="uid://b8b1arlw712ts" path="res://Scripts/loading_screen.gd" id="1_kddo8"]
+
+[node name="LoadingScreen" type="Node2D" unique_id=2086749312]
+process_mode = 3
+script = ExtResource("1_kddo8")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1920588826]
+offset_left = -57.0
+offset_top = -39.0
+offset_right = 1330.0
+offset_bottom = 774.0
+color = Color(0, 0, 0, 1)

@@ -1,17 +1,34 @@
 [gd_scene format=3 uid="uid://dywjhbiic3bpi"]
 
-[ext_resource type="Texture2D" uid="uid://c7h53wjsge2ll" path="res://Assets/StartingMenuBG.jpg" id="1_pxkw3"]
 [ext_resource type="Script" uid="uid://ewhff2mhtvdo" path="res://Scripts/starting_menu.gd" id="1_rgq4t"]
+[ext_resource type="Texture2D" uid="uid://d0g1c5iehqw6u" path="res://Assets/Starting Menu/StartingMenuBG.png" id="2_nf1qf"]
+[ext_resource type="Texture2D" uid="uid://citu6cqexo255" path="res://Assets/Starting Menu/StartingMenuComp.png" id="3_3l5xr"]
 [ext_resource type="FontFile" uid="uid://ptm1ayrjl0g4" path="res://Assets/Fonts/Courier Prime Code.ttf" id="3_bhq4f"]
 [ext_resource type="FontFile" uid="uid://dbvj2nfatqdix" path="res://Assets/Fonts/Courier Prime Code Italic.ttf" id="4_oduuu"]
+[ext_resource type="PackedScene" uid="uid://crm30o5eglfnr" path="res://Scenes/LoadingScreen.tscn" id="5_oduuu"]
+[ext_resource type="Texture2D" uid="uid://bxtf2beytjp32" path="res://Assets/Starting Menu/Prof1.png" id="7_sedmu"]
+[ext_resource type="Texture2D" uid="uid://8nhcdffn3h3d" path="res://Assets/Starting Menu/Prof1H.png" id="8_70xmv"]
+[ext_resource type="Texture2D" uid="uid://bjincgigoim3g" path="res://Assets/Starting Menu/Prof2.png" id="9_ef3jf"]
+[ext_resource type="Texture2D" uid="uid://cg08pdpdgwrw2" path="res://Assets/Starting Menu/Prof2H.png" id="10_n4pie"]
+[ext_resource type="Texture2D" uid="uid://r5x2kxmpj3rm" path="res://Assets/Starting Menu/Prof3.png" id="11_w6o6u"]
+[ext_resource type="Texture2D" uid="uid://lphofl4jueqe" path="res://Assets/Starting Menu/Prof3H.png" id="12_nxvvn"]
+[ext_resource type="Texture2D" uid="uid://61luqitjb1bm" path="res://Assets/Starting Menu/AnonProf.png" id="13_x20gy"]
+[ext_resource type="Texture2D" uid="uid://3ilrsdmdfag7" path="res://Assets/Starting Menu/Invitation.png" id="14_okgkj"]
+[ext_resource type="Texture2D" uid="uid://ds6tiut741lvf" path="res://Assets/Starting Menu/InvitationH.png" id="15_tj6fj"]
 
 [node name="StartingMenu" type="Node2D" unique_id=1681848724]
+process_mode = 1
 script = ExtResource("1_rgq4t")
 
 [node name="StartingMenuBg" type="Sprite2D" parent="." unique_id=901696060]
-position = Vector2(576, 320)
-scale = Vector2(1.9019607, 1.4093686)
-texture = ExtResource("1_pxkw3")
+position = Vector2(-42.666626, -24)
+scale = Vector2(1.0666666, 1.0666667)
+texture = ExtResource("2_nf1qf")
+centered = false
+
+[node name="StartingMenuComp" type="Sprite2D" parent="." unique_id=1971947396]
+texture = ExtResource("3_3l5xr")
+centered = false
 
 [node name="CompScreen" type="RichTextLabel" parent="." unique_id=1537234732]
 z_index = 3
@@ -27,17 +44,69 @@ scroll_active = false
 scroll_following = true
 metadata/_edit_use_anchors_ = true
 
-[node name="EmailColor" type="ColorRect" parent="." unique_id=1341408892]
-z_index = 1
-offset_left = 55.0
-offset_top = 91.0
-offset_right = 735.0
-offset_bottom = 380.0
+[node name="LoadingScreen" parent="." unique_id=2086749312 instance=ExtResource("5_oduuu")]
+visible = false
+z_index = 100
+position = Vector2(12, 1)
 
-[node name="HackColor" type="ColorRect" parent="." unique_id=425381504]
-z_index = 2
-offset_left = 55.0
-offset_top = 91.0
-offset_right = 735.0
-offset_bottom = 380.0
-color = Color(0, 0, 0, 1)
+[node name="Buttons" type="Control" parent="." unique_id=623551755]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Prof1" type="TextureButton" parent="Buttons" unique_id=814477086]
+z_index = 4
+layout_mode = 0
+offset_left = 282.0
+offset_top = 66.0
+offset_right = 460.0
+offset_bottom = 125.0
+texture_normal = ExtResource("7_sedmu")
+texture_pressed = ExtResource("7_sedmu")
+texture_hover = ExtResource("8_70xmv")
+
+[node name="Prof2" type="TextureButton" parent="Buttons" unique_id=1683269621]
+z_index = 4
+layout_mode = 0
+offset_left = 280.815
+offset_top = 185.125
+offset_right = 461.815
+offset_bottom = 247.125
+scale = Vector2(0.996, 0.996)
+texture_normal = ExtResource("9_ef3jf")
+texture_pressed = ExtResource("9_ef3jf")
+texture_hover = ExtResource("10_n4pie")
+
+[node name="Prof3" type="TextureButton" parent="Buttons" unique_id=1106389101]
+z_index = 4
+layout_mode = 0
+offset_left = 280.885
+offset_top = 125.0
+offset_right = 461.885
+offset_bottom = 187.0
+scale = Vector2(0.996, 0.996)
+texture_normal = ExtResource("11_w6o6u")
+texture_pressed = ExtResource("11_w6o6u")
+texture_hover = ExtResource("12_nxvvn")
+
+[node name="Prof4" type="TextureButton" parent="Buttons" unique_id=1629429120]
+z_index = 4
+layout_mode = 0
+offset_left = 281.0
+offset_top = 245.0
+offset_right = 462.0
+offset_bottom = 307.0
+scale = Vector2(0.996, 0.996)
+texture_normal = ExtResource("13_x20gy")
+
+[node name="Invitation" type="TextureButton" parent="Buttons" unique_id=621011150]
+z_index = 4
+layout_mode = 0
+offset_left = 640.41
+offset_top = 300.53
+offset_right = 812.41
+offset_bottom = 349.53
+texture_normal = ExtResource("14_okgkj")
+texture_pressed = ExtResource("14_okgkj")
+texture_hover = ExtResource("15_tj6fj")

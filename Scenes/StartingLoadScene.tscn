@@ -11,16 +11,17 @@ script = ExtResource("1_g68ev")
 layout_mode = 0
 offset_left = -22.0
 offset_top = -27.0
-offset_right = 1182.0
-offset_bottom = 687.0
+offset_right = 1259.1058
+offset_bottom = 710.3271
+scale = Vector2(1.085, 1.085)
 color = Color(0, 0, 0, 1)
 
 [node name="SplashScreenWarning" type="RichTextLabel" parent="." unique_id=203376812]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_top = 159.0
-offset_right = 1149.0
-offset_bottom = 651.0
+offset_right = 1178.8018
+offset_bottom = 655.7741
+scale = Vector2(1.085, 1.085)
 theme_override_font_sizes/normal_font_size = 79
 bbcode_enabled = true
 text = "THIS GAME CONTAINS
