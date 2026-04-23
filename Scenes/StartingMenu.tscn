@@ -3,8 +3,6 @@
 [ext_resource type="Script" uid="uid://ewhff2mhtvdo" path="res://Scripts/starting_menu.gd" id="1_rgq4t"]
 [ext_resource type="Texture2D" uid="uid://d0g1c5iehqw6u" path="res://Assets/Starting Menu/StartingMenuBG.png" id="2_nf1qf"]
 [ext_resource type="Texture2D" uid="uid://citu6cqexo255" path="res://Assets/Starting Menu/StartingMenuComp.png" id="3_3l5xr"]
-[ext_resource type="FontFile" uid="uid://ptm1ayrjl0g4" path="res://Assets/Fonts/Courier Prime Code.ttf" id="3_bhq4f"]
-[ext_resource type="FontFile" uid="uid://dbvj2nfatqdix" path="res://Assets/Fonts/Courier Prime Code Italic.ttf" id="4_oduuu"]
 [ext_resource type="PackedScene" uid="uid://crm30o5eglfnr" path="res://Scenes/LoadingScreen.tscn" id="5_oduuu"]
 [ext_resource type="Texture2D" uid="uid://bxtf2beytjp32" path="res://Assets/Starting Menu/Prof1.png" id="7_sedmu"]
 [ext_resource type="Texture2D" uid="uid://8nhcdffn3h3d" path="res://Assets/Starting Menu/Prof1H.png" id="8_70xmv"]
@@ -21,92 +19,85 @@ process_mode = 1
 script = ExtResource("1_rgq4t")
 
 [node name="StartingMenuBg" type="Sprite2D" parent="." unique_id=901696060]
-position = Vector2(-42.666626, -24)
-scale = Vector2(1.0666666, 1.0666667)
+position = Vector2(630.00006, 371)
+scale = Vector2(1.4527773, 1.4527777)
 texture = ExtResource("2_nf1qf")
-centered = false
-
-[node name="StartingMenuComp" type="Sprite2D" parent="." unique_id=1971947396]
-texture = ExtResource("3_3l5xr")
-centered = false
-
-[node name="CompScreen" type="RichTextLabel" parent="." unique_id=1537234732]
-z_index = 3
-offset_left = 63.0
-offset_top = 99.0
-offset_right = 727.0
-offset_bottom = 372.0
-theme_override_colors/default_color = Color(0.36862746, 0.94509804, 0.29803923, 1)
-theme_override_fonts/normal_font = ExtResource("3_bhq4f")
-theme_override_fonts/italics_font = ExtResource("4_oduuu")
-bbcode_enabled = true
-scroll_active = false
-scroll_following = true
-metadata/_edit_use_anchors_ = true
 
 [node name="LoadingScreen" parent="." unique_id=2086749312 instance=ExtResource("5_oduuu")]
-visible = false
 z_index = 100
 position = Vector2(12, 1)
 
-[node name="Buttons" type="Control" parent="." unique_id=623551755]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Buttons" type="Node2D" parent="." unique_id=2122486136]
+scale = Vector2(1.14, 1.14)
 
 [node name="Prof1" type="TextureButton" parent="Buttons" unique_id=814477086]
-z_index = 4
-layout_mode = 0
-offset_left = 282.0
-offset_top = 66.0
-offset_right = 460.0
-offset_bottom = 125.0
+z_index = 5
+offset_left = 213.455
+offset_top = 46.545
+offset_right = 391.45502
+offset_bottom = 105.54501
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("7_sedmu")
 texture_pressed = ExtResource("7_sedmu")
 texture_hover = ExtResource("8_70xmv")
+metadata/_edit_use_anchors_ = true
 
 [node name="Prof2" type="TextureButton" parent="Buttons" unique_id=1683269621]
-z_index = 4
-layout_mode = 0
-offset_left = 280.815
-offset_top = 185.125
-offset_right = 461.815
-offset_bottom = 247.125
+z_index = 5
+offset_left = 212.97
+offset_top = 164.125
+offset_right = 393.9701
+offset_bottom = 226.12502
 scale = Vector2(0.996, 0.996)
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("9_ef3jf")
 texture_pressed = ExtResource("9_ef3jf")
 texture_hover = ExtResource("10_n4pie")
+metadata/_edit_use_anchors_ = true
 
 [node name="Prof3" type="TextureButton" parent="Buttons" unique_id=1106389101]
-z_index = 4
-layout_mode = 0
-offset_left = 280.885
-offset_top = 125.0
-offset_right = 461.885
-offset_bottom = 187.0
+z_index = 5
+offset_left = 212.945
+offset_top = 105.11
+offset_right = 393.945
+offset_bottom = 167.11005
 scale = Vector2(0.996, 0.996)
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("11_w6o6u")
 texture_pressed = ExtResource("11_w6o6u")
 texture_hover = ExtResource("12_nxvvn")
+metadata/_edit_use_anchors_ = true
 
 [node name="Prof4" type="TextureButton" parent="Buttons" unique_id=1629429120]
-z_index = 4
-layout_mode = 0
-offset_left = 281.0
-offset_top = 245.0
-offset_right = 462.0
-offset_bottom = 307.0
+z_index = 5
+offset_left = 212.63
+offset_top = 222.785
+offset_right = 393.63
+offset_bottom = 284.78503
 scale = Vector2(0.996, 0.996)
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("13_x20gy")
+metadata/_edit_use_anchors_ = true
 
 [node name="Invitation" type="TextureButton" parent="Buttons" unique_id=621011150]
-z_index = 4
-layout_mode = 0
-offset_left = 640.41
-offset_top = 300.53
-offset_right = 812.41
-offset_bottom = 349.53
+z_index = 5
+anchors_preset = -1
+anchor_left = -2.5951812
+anchor_top = 0.008679962
+anchor_right = -2.5951812
+anchor_bottom = 0.008679962
+offset_left = 577.81
+offset_top = 278.685
+offset_right = 749.81
+offset_bottom = 327.685
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("14_okgkj")
 texture_pressed = ExtResource("14_okgkj")
 texture_hover = ExtResource("15_tj6fj")
+metadata/_edit_use_anchors_ = true
+
+[node name="StartingMenuComp" type="Sprite2D" parent="Buttons" unique_id=1971947396]
+position = Vector2(571.829, 341.54385)
+texture = ExtResource("3_3l5xr")
+
+[connection signal="pressed" from="Buttons/Invitation" to="." method="_on_invitation_pressed"]

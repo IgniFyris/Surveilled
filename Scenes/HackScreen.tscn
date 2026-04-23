@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://duhtkoemv8ov0"]
+
+[ext_resource type="Script" uid="uid://d1lfvr5xq3ps0" path="res://Scripts/tutorial.gd" id="1_wduq8"]
+[ext_resource type="FontFile" uid="uid://ptm1ayrjl0g4" path="res://Assets/Fonts/Courier Prime Code.ttf" id="2_uo1fs"]
+[ext_resource type="FontFile" uid="uid://dbvj2nfatqdix" path="res://Assets/Fonts/Courier Prime Code Italic.ttf" id="3_7bloo"]
+[ext_resource type="Material" uid="uid://cxr7ihe8nn4hv" path="res://addons/crt_shader/ShaderScreen.material" id="4_mbjem"]
+
+[node name="HackScreen" type="Node2D" unique_id=462565902]
+script = ExtResource("1_wduq8")
+
+[node name="CompScreen" type="RichTextLabel" parent="." unique_id=1516651372]
+z_index = 3
+offset_left = 5.0
+offset_top = -3.0
+offset_right = 1281.0
+offset_bottom = 721.0
+theme_override_colors/default_color = Color(0.36862746, 0.94509804, 0.29803923, 1)
+theme_override_fonts/normal_font = ExtResource("2_uo1fs")
+theme_override_fonts/italics_font = ExtResource("3_7bloo")
+theme_override_font_sizes/normal_font_size = 23
+bbcode_enabled = true
+scroll_active = false
+scroll_following = true
+
+[node name="Shader" type="ColorRect" parent="." unique_id=1575053151]
+z_index = 50
+material = ExtResource("4_mbjem")
+offset_left = -19.0
+offset_top = -19.0
+offset_right = 1315.0
+offset_bottom = 738.0
+color = Color(0.49268818, 0.24788651, 0.548003, 1)
+
+[connection signal="hack_finished" from="." to="." method="_on_hack_finished"]

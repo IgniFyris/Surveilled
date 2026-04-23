@@ -1,13 +1,29 @@
 extends Node2D
 
-@onready var comp_screen: RichTextLabel = $CompScreen
+@onready var starting_menu_bg: Sprite2D = $StartingMenuBg
+@onready var buttons: Node2D = $Buttons
+@onready var loading_screen: Node2D = $LoadingScreen
+@onready var invitation: TextureButton = $Buttons/Invitation
+
+const HACK_SCREEN = preload("uid://duhtkoemv8ov0")
+
+var center
 
 func _ready() -> void:
-	comp_text_display("test", comp_screen, 0.02)
+	center = Vector2(get_viewport_rect().size.x/2, get_viewport_rect().size.y/2)
+	Input.warp_mouse(center)
 	
-func comp_text_display(comp_text : String, comp_text_container : RichTextLabel, speed : float):
-	var text_array = comp_text.rsplit()
+func _process(delta: float) -> void:
+	var offset = center - get_global_mouse_position() 
+	print(offset)
+
+	create_tween().tween_property(starting_menu_bg, "global_position", (offset * 0.02) + Vector2(600, 400), 1)
+	create_tween().tween_property(buttons, "global_position", offset * 0.07, 1)
+
+func _on_invitation_pressed() -> void:
+	invitation.disabled = true
+	loading_screen.modulate.a = 1
 	
-	for character in text_array:
-		comp_text_container.text = comp_screen.text + character
-		await get_tree().create_timer(speed).timeout
+	await get_tree().create_timer(2.0).timeout
+	
+	get_tree().change_scene_to_packed(HACK_SCREEN)

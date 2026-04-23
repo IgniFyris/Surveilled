@@ -12,5 +12,6 @@ func _ready() -> void:
 	tw = create_tween().tween_property(splash_screen_warning, "modulate:a", 0, 1)
 	
 	await tw.finished
+	await get_tree().create_timer(1.5).timeout
 	
 	get_tree().change_scene_to_packed(STARTING_MENU)

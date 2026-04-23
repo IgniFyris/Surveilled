@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://tfrbmimnvxvf"]
+
+[ext_resource type="Script" uid="uid://ckbil1gso4jk3" path="res://crt_shader/crt_shader.gd" id="1_wduq8"]
+
+[node name="Tutorial" type="Node2D" unique_id=1989447986]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1013975414]
+offset_left = -19.0
+offset_top = -19.0
+offset_right = 1315.0
+offset_bottom = 738.0
+color = Color(0.1893278, 0.18932778, 0.1893278, 1)
+script = ExtResource("1_wduq8")
