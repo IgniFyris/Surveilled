@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7rrbl58e5lm6"
-path="res://.godot/imported/CRTFrame.png-872eedb156a5c6ffe1f1a64a1e49445b.ctex"
+uid="uid://dscwf62ehghyg"
+path="res://.godot/imported/MouseCursor.png-36345eadd7d8fe6d67f81de9b6553824.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/crt_shader/CRTFrame.png"
-dest_files=["res://.godot/imported/CRTFrame.png-872eedb156a5c6ffe1f1a64a1e49445b.ctex"]
+source_file="res://Assets/MouseCursor.png"
+dest_files=["res://.godot/imported/MouseCursor.png-36345eadd7d8fe6d67f81de9b6553824.ctex"]
 
 [params]
 

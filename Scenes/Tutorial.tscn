@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://tfrbmimnvxvf"]
 
 [ext_resource type="Material" uid="uid://cxr7ihe8nn4hv" path="res://addons/crt_shader/ShaderScreen.material" id="1_2o727"]
-[ext_resource type="Texture2D" uid="uid://citu6cqexo255" path="res://Assets/Starting Menu/StartingMenuComp.png" id="1_wduq8"]
+[ext_resource type="Script" uid="uid://dwfoklisiuums" path="res://Scripts/tutorial.gd" id="1_uo1fs"]
 
 [node name="Tutorial" type="Node2D" unique_id=1989447986]
+script = ExtResource("1_uo1fs")
 
 [node name="Shader" type="ColorRect" parent="." unique_id=1013975414]
 z_index = 50
@@ -14,7 +15,18 @@ offset_right = 1315.0
 offset_bottom = 738.0
 color = Color(0.49268818, 0.24788651, 0.548003, 1)
 
-[node name="StartingMenuComp" type="Sprite2D" parent="." unique_id=1597636357]
-position = Vector2(633, 354.99997)
-scale = Vector2(1.0055556, 1.0055556)
-texture = ExtResource("1_wduq8")
+[node name="MouseParticles" type="CPUParticles2D" parent="." unique_id=1080011297]
+position = Vector2(455, 226)
+amount = 11
+lifetime = 0.05
+speed_scale = 0.15
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(13.395, 20)
+spread = 0.0
+gravity = Vector2(0, 0)
+scale_amount_min = 1.85
+scale_amount_max = 4.7
+color = Color(1, 0.6138314, 0.9847918, 1)
+hue_variation_min = 1.0
+hue_variation_max = 1.0
