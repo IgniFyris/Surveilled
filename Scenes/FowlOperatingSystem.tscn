@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://chkn066pqicwg"]
+
+[ext_resource type="Script" uid="uid://fundp8yxgx8a" path="res://Scripts/fowl_operating_system.gd" id="1_t6tvy"]
+
+[node name="FowlOperatingSystem" type="Node2D" unique_id=1958182032]
+script = ExtResource("1_t6tvy")
+
+[node name="MouseParticles" type="CPUParticles2D" parent="." unique_id=1419766313]
+z_index = 75
+position = Vector2(-27, -31)
+amount = 11
+lifetime = 0.05
+speed_scale = 0.15
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(13.395, 20)
+spread = 0.0
+gravity = Vector2(0, 0)
+scale_amount_min = 1.85
+scale_amount_max = 4.7
+color = Color(1, 0.6138314, 0.9847918, 1)
+hue_variation_min = 1.0
+hue_variation_max = 1.0

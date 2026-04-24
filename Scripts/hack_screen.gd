@@ -41,7 +41,7 @@ Access Granted...
 
 Hit 'ENTER' to proceed..."
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_pressed("TutStart"):
 		get_tree().change_scene_to_packed(TUTORIAL)
 

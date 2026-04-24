@@ -5,6 +5,7 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5762712, 0.66975623), -0.86931
 point_count = 3
 
 [node name="MouseClickParticles" type="CPUParticles2D" unique_id=1049428619]
+z_index = 75
 emitting = false
 amount = 24
 lifetime = 0.4
