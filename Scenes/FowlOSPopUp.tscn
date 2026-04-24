@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://chkats5ngarti"]
+
+[ext_resource type="Texture2D" uid="uid://c1m62m1yq4jtw" path="res://Assets/FowlOS/FowlOSPopUp.png" id="1_t0bx1"]
+[ext_resource type="Script" uid="uid://bkg5a1rte6rre" path="res://Scripts/fowl_os_pop_up.gd" id="1_tgftq"]
+[ext_resource type="Texture2D" uid="uid://54pqqq8nkjsb" path="res://Assets/FowlOS/FowlOSIncorrect.png" id="2_b0n5m"]
+[ext_resource type="Texture2D" uid="uid://c4v1vgtkf6ype" path="res://Assets/FowlOS/FowlOSEnter.png" id="3_tfur1"]
+[ext_resource type="Texture2D" uid="uid://dhugywdeg20v1" path="res://Assets/FowlOS/FowlOSEnterH.png" id="4_tgftq"]
+[ext_resource type="Texture2D" uid="uid://d0dbx1kqx67bu" path="res://Assets/FowlOS/FowlOSCancel.png" id="5_w0pcp"]
+[ext_resource type="Texture2D" uid="uid://bmgqp6qvtlxfi" path="res://Assets/FowlOS/FowlOSCancelH.png" id="6_8kcja"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t0bx1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3y6hh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b0n5m"]
+
+[node name="FowlOSPopUp" type="Node2D" unique_id=528717235]
+process_mode = 3
+script = ExtResource("1_tgftq")
+
+[node name="FowlOSPopUpSprite" type="Sprite2D" parent="." unique_id=694909876]
+texture = ExtResource("1_t0bx1")
+
+[node name="Incorrect" type="Sprite2D" parent="." unique_id=229862450]
+visible = false
+z_index = 2
+position = Vector2(-25.835, 10.985)
+scale = Vector2(0.855, 0.855)
+texture = ExtResource("2_b0n5m")
+
+[node name="Username" type="LineEdit" parent="." unique_id=1205363624]
+offset_left = -119.0
+offset_top = 1.0
+offset_right = 183.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = SubResource("StyleBoxEmpty_t0bx1")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_3y6hh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b0n5m")
+text = "FowlSystems"
+max_length = 35
+emoji_menu_enabled = false
+clear_button_enabled = true
+drag_and_drop_selection_enabled = false
+caret_blink = true
+
+[node name="Password" type="LineEdit" parent="." unique_id=695627353]
+offset_left = -119.0
+offset_top = 28.325
+offset_right = 183.0
+offset_bottom = 51.324993
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = SubResource("StyleBoxEmpty_t0bx1")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_3y6hh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b0n5m")
+max_length = 35
+emoji_menu_enabled = false
+clear_button_enabled = true
+drag_and_drop_selection_enabled = false
+caret_blink = true
+
+[node name="Enter" type="TextureButton" parent="." unique_id=1258761897]
+offset_left = 69.0
+offset_top = 73.0
+offset_right = 127.0
+offset_bottom = 95.0
+texture_normal = ExtResource("3_tfur1")
+texture_pressed = ExtResource("3_tfur1")
+texture_hover = ExtResource("4_tgftq")
+
+[node name="Cancel" type="TextureButton" parent="." unique_id=1004158772]
+offset_left = 134.0
+offset_top = 73.0
+offset_right = 192.0
+offset_bottom = 95.0
+texture_normal = ExtResource("5_w0pcp")
+texture_pressed = ExtResource("5_w0pcp")
+texture_hover = ExtResource("6_8kcja")
+
+[connection signal="text_changed" from="Username" to="." method="_on_username_text_changed"]
+[connection signal="text_changed" from="Password" to="." method="_on_password_text_changed"]
+[connection signal="pressed" from="Enter" to="." method="_on_enter_pressed"]
+[connection signal="pressed" from="Cancel" to="." method="_on_cancel_pressed"]

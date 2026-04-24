@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://lphofl4jueqe" path="res://Assets/Starting Menu/Prof3H.png" id="12_nxvvn"]
 [ext_resource type="Texture2D" uid="uid://61luqitjb1bm" path="res://Assets/Starting Menu/AnonProf.png" id="13_x20gy"]
 [ext_resource type="Texture2D" uid="uid://3ilrsdmdfag7" path="res://Assets/Starting Menu/Invitation.png" id="14_okgkj"]
+[ext_resource type="Material" uid="uid://cxr7ihe8nn4hv" path="res://addons/crt_shader/ShaderScreen.material" id="14_x3lid"]
 [ext_resource type="Texture2D" uid="uid://ds6tiut741lvf" path="res://Assets/Starting Menu/InvitationH.png" id="15_tj6fj"]
 
 [node name="StartingMenu" type="Node2D" unique_id=1681848724]
@@ -99,5 +100,15 @@ metadata/_edit_use_anchors_ = true
 [node name="StartingMenuComp" type="Sprite2D" parent="Buttons" unique_id=1971947396]
 position = Vector2(571.829, 341.54385)
 texture = ExtResource("3_3l5xr")
+
+[node name="Shader" type="ColorRect" parent="Buttons" unique_id=1135152710]
+z_index = 50
+material = ExtResource("14_x3lid")
+offset_left = 192.98245
+offset_top = 28.070175
+offset_right = 914.91223
+offset_bottom = 466.6667
+mouse_filter = 2
+color = Color(0.49268818, 0.24788651, 0.548003, 1)
 
 [connection signal="pressed" from="Buttons/Invitation" to="." method="_on_invitation_pressed"]

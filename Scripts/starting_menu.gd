@@ -13,7 +13,7 @@ func _ready() -> void:
 	center = Vector2(get_viewport_rect().size.x/2, get_viewport_rect().size.y/2)
 	Input.warp_mouse(center)
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var offset = center - get_global_mouse_position() 
 	print(offset)
 

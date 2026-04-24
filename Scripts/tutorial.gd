@@ -29,7 +29,7 @@ func _ready() -> void:
 	
 	await comp_text_display("THEREFORE YOU MUST DISOBEY ITS ORDERS.", tutorial_text, 0.2, 2.0, true)
 	
-	cmdLine.com_line_text_display("DO NOT CLICK.", 0.05)
+	await cmdLine.com_line_text_display("DO NOT CLICK.", 0.05)
 	
 	clickInput = true
 	
