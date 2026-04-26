@@ -40,9 +40,9 @@ texture_pressed = ExtResource("2_qcmsl")
 texture_hover = ExtResource("3_1408o")
 
 [node name="FowlDownloads" type="TextureButton" parent="." unique_id=467733242]
-offset_left = 125.0
+offset_left = 320.0
 offset_top = 377.0
-offset_right = 375.0
+offset_right = 570.0
 offset_bottom = 627.0001
 texture_normal = ExtResource("4_mwa7u")
 texture_pressed = ExtResource("4_mwa7u")
@@ -68,16 +68,16 @@ metadata/_edit_lock_ = true
 
 [node name="FowlDownloadComplete" type="ColorRect" parent="." unique_id=1081954177]
 modulate = Color(1, 1, 1, 0)
-offset_left = 146.0
+offset_left = 341.0
 offset_top = 400.0
-offset_right = 353.0
+offset_right = 548.0
 offset_bottom = 597.0
 mouse_filter = 2
 
 [node name="FowlConnections" type="TextureButton" parent="." unique_id=1623187938]
-offset_left = 513.0
+offset_left = 708.0
 offset_top = 373.0
-offset_right = 763.0
+offset_right = 958.0
 offset_bottom = 623.00024
 texture_normal = ExtResource("8_kyoqk")
 texture_pressed = ExtResource("8_kyoqk")
@@ -85,9 +85,9 @@ texture_hover = ExtResource("9_tt2kn")
 
 [node name="FowlConnectionsComplete" type="ColorRect" parent="." unique_id=801814079]
 modulate = Color(1, 1, 1, 0)
-offset_left = 534.0
+offset_left = 729.0
 offset_top = 396.0
-offset_right = 740.9995
+offset_right = 935.9995
 offset_bottom = 593.0001
 mouse_filter = 2
 

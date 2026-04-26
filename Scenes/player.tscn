@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bfjgj6homclxp"]
+
+[ext_resource type="Script" uid="uid://bc7i6eyr5tlir" path="res://Scripts/player.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://bo3o1l7g50cq8" path="res://Assets/Connections/Player.png" id="1_v0iea"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cvnsp"]
+radius = 27.018513
+
+[node name="Player" type="CharacterBody2D" unique_id=1741128796]
+motion_mode = 1
+script = ExtResource("1_cvnsp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=310475614]
+shape = SubResource("CircleShape2D_cvnsp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=901956061]
+texture = ExtResource("1_v0iea")
+
+[node name="Raycasts" type="Node2D" parent="." unique_id=330318649]
+
+[node name="Down" type="RayCast2D" parent="Raycasts" unique_id=1280734699]
+exclude_parent = false
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Right" type="RayCast2D" parent="Raycasts" unique_id=499954157]
+exclude_parent = false
+target_position = Vector2(48, 0)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Up" type="RayCast2D" parent="Raycasts" unique_id=1515684887]
+exclude_parent = false
+target_position = Vector2(0, -47)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Left" type="RayCast2D" parent="Raycasts" unique_id=980560166]
+exclude_parent = false
+target_position = Vector2(-51, 0)
+collide_with_areas = true
+collide_with_bodies = false

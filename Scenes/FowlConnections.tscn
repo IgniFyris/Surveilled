@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cnujx2djk2opd" path="res://Scripts/fowl_connections.gd" id="1_lntt3"]
 [ext_resource type="FontFile" uid="uid://ptm1ayrjl0g4" path="res://Assets/Fonts/Courier Prime Code.ttf" id="2_lhn3t"]
+[ext_resource type="PackedScene" uid="uid://bfjgj6homclxp" path="res://Scenes/player.tscn" id="3_jxgge"]
 
 [node name="FowlConnections" type="Node2D" unique_id=1538851253]
 script = ExtResource("1_lntt3")
@@ -46,3 +47,6 @@ scroll_following = true
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
+
+[node name="Player" parent="." unique_id=1741128796 instance=ExtResource("3_jxgge")]
+position = Vector2(607, 376)
