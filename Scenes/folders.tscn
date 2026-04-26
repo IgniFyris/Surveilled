@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://ddpqcx5on4mwj"]
+
+[ext_resource type="Texture2D" uid="uid://b6eqb7s7s2dbi" path="res://Assets/Downloads/GreenFolder.png" id="1_kbhfh"]
+[ext_resource type="Texture2D" uid="uid://jbgi21w3pyef" path="res://Assets/Downloads/BlueFolder.png" id="1_lxx2w"]
+[ext_resource type="Texture2D" uid="uid://ccc6ebwoqey8v" path="res://Assets/Downloads/RedFolder.png" id="1_njs8r"]
+[ext_resource type="Script" uid="uid://ctjigjfu6gw41" path="res://Scripts/folders.gd" id="1_w7vyc"]
+
+[node name="Folders" type="Node2D" unique_id=2014473809]
+script = ExtResource("1_w7vyc")
+
+[node name="Sprites" type="Node2D" parent="." unique_id=948099845]
+
+[node name="Blue" type="Sprite2D" parent="Sprites" unique_id=1696698814]
+visible = false
+texture = ExtResource("1_lxx2w")
+
+[node name="Red" type="Sprite2D" parent="Sprites" unique_id=206679266]
+visible = false
+texture = ExtResource("1_njs8r")
+
+[node name="Green" type="Sprite2D" parent="Sprites" unique_id=673636308]
+visible = false
+texture = ExtResource("1_kbhfh")
+
+[node name="HoverArea" type="ColorRect" parent="." unique_id=1105299193]
+modulate = Color(1, 1, 1, 0)
+offset_left = -68.0
+offset_top = -40.0
+offset_right = 69.0
+offset_bottom = 49.0
+
+[connection signal="mouse_entered" from="HoverArea" to="." method="_on_hover_area_mouse_entered"]
+[connection signal="mouse_exited" from="HoverArea" to="." method="_on_hover_area_mouse_exited"]

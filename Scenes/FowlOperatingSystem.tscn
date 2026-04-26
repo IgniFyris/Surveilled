@@ -4,7 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://de1bd3cuaoxrn" path="res://Assets/FowlOS/FowlOSIcon.png" id="2_qcmsl"]
 [ext_resource type="Texture2D" uid="uid://ciatdbyt0xl7s" path="res://Assets/FowlOS/FowlOSIconH.png" id="3_1408o"]
 [ext_resource type="Texture2D" uid="uid://lj2ggfnhreud" path="res://Assets/FowlServerBG.png" id="4_1408o"]
+[ext_resource type="Texture2D" uid="uid://bsm88k041y1nb" path="res://Assets/Downloads/Downloads.png" id="4_mwa7u"]
 [ext_resource type="Material" uid="uid://cxr7ihe8nn4hv" path="res://addons/crt_shader/ShaderScreen.material" id="5_f5yuf"]
+[ext_resource type="Texture2D" uid="uid://bgq5dkt6533oo" path="res://Assets/Downloads/DownloadsH.png" id="5_jc60h"]
+[ext_resource type="Texture2D" uid="uid://5riqtclb5yyh" path="res://Assets/Connections/Connections.png" id="8_kyoqk"]
+[ext_resource type="Texture2D" uid="uid://bmcfvkd1hm6sf" path="res://Assets/Connections/ConnectionsH.png" id="9_tt2kn"]
 
 [node name="FowlOperatingSystem" type="Node2D" unique_id=1958182032]
 script = ExtResource("1_t6tvy")
@@ -35,6 +39,15 @@ texture_normal = ExtResource("2_qcmsl")
 texture_pressed = ExtResource("2_qcmsl")
 texture_hover = ExtResource("3_1408o")
 
+[node name="FowlDownloads" type="TextureButton" parent="." unique_id=467733242]
+offset_left = 125.0
+offset_top = 377.0
+offset_right = 375.0
+offset_bottom = 627.0001
+texture_normal = ExtResource("4_mwa7u")
+texture_pressed = ExtResource("4_mwa7u")
+texture_hover = ExtResource("5_jc60h")
+
 [node name="Shader" type="ColorRect" parent="." unique_id=1671275970]
 z_index = 50
 material = ExtResource("5_f5yuf")
@@ -44,11 +57,72 @@ offset_right = 1315.0
 offset_bottom = 738.0
 mouse_filter = 2
 color = Color(0.49268818, 0.24788651, 0.548003, 1)
+metadata/_edit_lock_ = true
 
 [node name="FowlServerBg" type="Sprite2D" parent="." unique_id=1945629168]
 modulate = Color(1, 1, 1, 0.6509804)
 z_index = -100
 texture = ExtResource("4_1408o")
 centered = false
+metadata/_edit_lock_ = true
+
+[node name="FowlDownloadComplete" type="ColorRect" parent="." unique_id=1081954177]
+modulate = Color(1, 1, 1, 0)
+offset_left = 146.0
+offset_top = 400.0
+offset_right = 353.0
+offset_bottom = 597.0
+mouse_filter = 2
+
+[node name="FowlConnections" type="TextureButton" parent="." unique_id=1623187938]
+offset_left = 513.0
+offset_top = 373.0
+offset_right = 763.0
+offset_bottom = 623.00024
+texture_normal = ExtResource("8_kyoqk")
+texture_pressed = ExtResource("8_kyoqk")
+texture_hover = ExtResource("9_tt2kn")
+
+[node name="FowlConnectionsComplete" type="ColorRect" parent="." unique_id=801814079]
+modulate = Color(1, 1, 1, 0)
+offset_left = 534.0
+offset_top = 396.0
+offset_right = 740.9995
+offset_bottom = 593.0001
+mouse_filter = 2
+
+[node name="PW1" type="RichTextLabel" parent="." unique_id=326004494]
+visible = false
+offset_left = 139.0
+offset_top = 334.0
+offset_right = 354.0
+offset_bottom = 385.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 37
+text = "1 -AMV"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PW2" type="RichTextLabel" parent="." unique_id=684328154]
+visible = false
+offset_left = 531.0
+offset_top = 334.0
+offset_right = 746.0
+offset_bottom = 385.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 37
+text = "2 - ZCWF"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="FowlMainProgram" to="." method="_on_fowl_main_program_pressed"]
+[connection signal="pressed" from="FowlDownloads" to="." method="_on_fowl_downloads_pressed"]
+[connection signal="mouse_entered" from="FowlDownloadComplete" to="." method="_on_fowl_download_complete_mouse_entered"]
+[connection signal="mouse_exited" from="FowlDownloadComplete" to="." method="_on_fowl_download_complete_mouse_exited"]
+[connection signal="pressed" from="FowlConnections" to="." method="_on_fowl_connections_pressed"]
+[connection signal="mouse_entered" from="FowlConnectionsComplete" to="." method="_on_fowl_connections_complete_mouse_entered"]
+[connection signal="mouse_exited" from="FowlConnectionsComplete" to="." method="_on_fowl_connections_complete_mouse_exited"]

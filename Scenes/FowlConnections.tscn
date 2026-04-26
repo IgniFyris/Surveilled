@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://33u010ucbdw"]
+
+[ext_resource type="Script" uid="uid://cnujx2djk2opd" path="res://Scripts/fowl_connections.gd" id="1_lntt3"]
+[ext_resource type="FontFile" uid="uid://ptm1ayrjl0g4" path="res://Assets/Fonts/Courier Prime Code.ttf" id="2_lhn3t"]
+
+[node name="FowlConnections" type="Node2D" unique_id=1538851253]
+script = ExtResource("1_lntt3")
+
+[node name="MouseParticles" type="CPUParticles2D" parent="." unique_id=606757580]
+z_index = 75
+position = Vector2(-27, -31)
+amount = 11
+lifetime = 0.05
+speed_scale = 0.15
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(13.395, 20)
+spread = 0.0
+gravity = Vector2(0, 0)
+scale_amount_min = 1.85
+scale_amount_max = 4.7
+color = Color(1, 0.6138314, 0.9847918, 1)
+hue_variation_min = 1.0
+hue_variation_max = 1.0
+
+[node name="HurtFlash" type="ColorRect" parent="." unique_id=21026725]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+offset_left = -22.0
+offset_top = -17.0
+offset_right = 1301.0
+offset_bottom = 748.0
+color = Color(0.9996776, 0.14746779, 0.10515281, 1)
+metadata/_edit_lock_ = true
+
+[node name="ConnectionsText" type="RichTextLabel" parent="." unique_id=312846587]
+offset_left = 66.0
+offset_top = 137.33002
+offset_right = 1223.0
+offset_bottom = 615.0
+theme_override_colors/default_color = Color(0, 0.9934953, 0.3584144, 1)
+theme_override_fonts/normal_font = ExtResource("2_lhn3t")
+theme_override_font_sizes/normal_font_size = 60
+scroll_active = false
+scroll_following = true
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true

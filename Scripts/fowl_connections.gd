@@ -1,38 +1,31 @@
 extends Node2D
-
-const MOUSE_CURSOR = preload("uid://dscwf62ehghyg")
 const MOUSE_CLICK_PARTICLES = preload("uid://d3kcljcgixdmc")
-const FOWL_OPERATING_SYSTEM = preload("uid://chkn066pqicwg")
+const COMMAND_LINE = preload("uid://bpgfgl66acbkf")
 
 @onready var mouse_particles: CPUParticles2D = $MouseParticles
-@onready var tutorial_text: RichTextLabel = $TutorialText
+@onready var hurt_flash: ColorRect = $HurtFlash
+@onready var connections_text: RichTextLabel = $ConnectionsText
 
-var cmdLine
 var pressed = false
-var clickInput = false
+var cmdLine
 
 func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	Input.set_custom_mouse_cursor(MOUSE_CURSOR, Input.CURSOR_ARROW, Vector2(26, 26))
-	
-	await get_tree().create_timer(2.0).timeout
-	await comp_text_display("ISN'T THAT RIGHT,", tutorial_text, 0.2, 2.0, false)
-	
-	mouse_particles.visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	set_process_input(false)
+	set_process(false)
+	await comp_text_display("[FOWL.OS CONNECTIONS SECTOR]", connections_text, 0.08, 2.0, true)
+	await comp_text_display("
+INFECT ALL NODES", connections_text, 0.08, 2.0, true)
+	await comp_text_display("
+'WASD' TO MOVE", connections_text, 0.08, 2.0, false)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	set_process_input(true)
+	set_process(true)
 	
-	var username
-	if OS.has_environment("USERNAME"):
-		username = OS.get_environment("USERNAME")
-	else:
-		username = "YOU FILTHY FOX"
-	
-	await comp_text_display(username.to_upper() + "?", tutorial_text, 0.5, 2.0, true)
-	
-	username = ""
-	#insert eye opening animation and end to game here
-	
+	cmdLine = COMMAND_LINE.instantiate()
+	add_child(cmdLine)
+	cmdLine.enter()
+
 func _process(_delta: float) -> void:
 	mouse_particles.position = get_global_mouse_position()
 

@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://bbyvgnoa7o663"]
+
+[ext_resource type="Script" uid="uid://bkjlgac4e53pf" path="res://Scripts/program_load_screen.gd" id="1_0qa3l"]
+[ext_resource type="Texture2D" uid="uid://do4m1mehujd8w" path="res://Assets/FowlOS/ProgressUnder.png" id="2_1lfyk"]
+[ext_resource type="Texture2D" uid="uid://nq4ae8jnx0gg" path="res://Assets/FowlOS/Progress.png" id="3_oasxj"]
+[ext_resource type="FontFile" uid="uid://ptm1ayrjl0g4" path="res://Assets/Fonts/Courier Prime Code.ttf" id="4_1lfyk"]
+
+[node name="ProgramLoadScreen" type="Node2D" unique_id=663563747]
+process_mode = 3
+z_index = 13
+script = ExtResource("1_0qa3l")
+
+[node name="FowlOSLoading" type="TextureProgressBar" parent="." unique_id=1353037902]
+z_index = 1
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -37.5
+offset_right = 270.0
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_under = ExtResource("2_1lfyk")
+texture_progress = ExtResource("3_oasxj")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1800294407]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ScreenText" type="RichTextLabel" parent="." unique_id=115132586]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -385.0
+offset_top = -85.905
+offset_right = 385.0
+offset_bottom = -38.905
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("4_1lfyk")
+theme_override_font_sizes/normal_font_size = 45
+text = "LOADING..."
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1

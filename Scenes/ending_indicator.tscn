@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dtqk5xa41tlcm"]
+
+[ext_resource type="Script" uid="uid://dc3q8i6wbla5m" path="res://Scripts/ending_indicator.gd" id="1_dep2p"]
+[ext_resource type="Texture2D" uid="uid://cgfgv7etohcgb" path="res://Assets/Detected.png" id="2_up3rj"]
+[ext_resource type="Texture2D" uid="uid://bklp2w83okep1" path="res://Assets/Infected.png" id="3_1e2ps"]
+
+[node name="EndingIndicator" type="Node2D" unique_id=596716779]
+process_mode = 3
+z_index = 10
+script = ExtResource("1_dep2p")
+
+[node name="Detected" type="Sprite2D" parent="." unique_id=1707292327]
+visible = false
+z_index = 10
+texture = ExtResource("2_up3rj")
+metadata/_edit_lock_ = true
+
+[node name="Infected" type="Sprite2D" parent="." unique_id=1080345430]
+visible = false
+z_index = 10
+texture = ExtResource("3_1e2ps")
+metadata/_edit_lock_ = true

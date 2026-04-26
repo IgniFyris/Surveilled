@@ -43,6 +43,7 @@ _data = {
 }
 
 [node name="CommandLine" type="Node2D" unique_id=726803554]
+process_mode = 3
 script = ExtResource("2_80rjw")
 
 [node name="ComLineText" type="RichTextLabel" parent="." unique_id=390357168]
