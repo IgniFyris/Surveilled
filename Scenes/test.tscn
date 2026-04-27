@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cp3bkoujeyj1s"]
+
+[ext_resource type="Script" uid="uid://d0gitc0n2sq5u" path="res://Scripts/test.gd" id="1_8od7v"]
+[ext_resource type="PackedScene" uid="uid://ndxe7eglmwwi" path="res://Scenes/node.tscn" id="1_lc1oi"]
+
+[node name="Node2D" type="Node2D" unique_id=159970522]
+script = ExtResource("1_8od7v")
+
+[node name="Node" parent="." unique_id=41627377 instance=ExtResource("1_lc1oi")]
+position = Vector2(369, 214)
+
+[node name="Node2" parent="." unique_id=564106272 instance=ExtResource("1_lc1oi")]
+position = Vector2(433, 214)
+
+[editable path="Node2"]

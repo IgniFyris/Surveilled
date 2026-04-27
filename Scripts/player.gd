@@ -15,23 +15,54 @@ func _input(_event: InputEvent) -> void:
 			sprite.rotation_degrees = 180
 			self.position.y += 64
 			set_cooldown()
+		if GlobalVars.current_direction == "DOWN":
+			if GlobalVars.current_activity == "MOVE" or GlobalVars.current_activity == "PROCEED":
+				get_parent().hurt()
+		elif GlobalVars.current_direction == "UP" or (
+			GlobalVars.current_direction == "LEFT") or (
+			GlobalVars.current_direction == "RIGHT"):
+			if GlobalVars.current_activity == "DO NOT ADVANCE" or GlobalVars.current_activity == "DO NOT GO":
+				get_parent().hurt()
 	elif Input.is_action_just_pressed("Up"):
 		if up.is_colliding() and not on_cooldown:
 			sprite.rotation_degrees = 0
 			self.position.y -= 64
 			set_cooldown()
+		if GlobalVars.current_direction == "UP":
+			if GlobalVars.current_activity == "MOVE" or GlobalVars.current_activity == "PROCEED":
+				get_parent().hurt()
+		elif GlobalVars.current_direction == "DOWN" or (
+			GlobalVars.current_direction == "LEFT") or (
+			GlobalVars.current_direction == "RIGHT"):
+			if GlobalVars.current_activity == "DO NOT ADVANCE" or GlobalVars.current_activity == "DO NOT GO":
+				get_parent().hurt()
 	elif Input.is_action_just_pressed("Left"):
 		if left.is_colliding() and not on_cooldown:
 			sprite.rotation_degrees = 270
 			self.position.x -= 64
 			set_cooldown()
+			if GlobalVars.current_direction == "LEFT":
+				if GlobalVars.current_activity == "MOVE" or GlobalVars.current_activity == "PROCEED":
+					get_parent().hurt()
+			elif GlobalVars.current_direction == "DOWN" or (
+			GlobalVars.current_direction == "UP") or (
+			GlobalVars.current_direction == "RIGHT"):
+				if GlobalVars.current_activity == "DO NOT ADVANCE" or GlobalVars.current_activity == "DO NOT GO":
+					get_parent().hurt()
 	elif Input.is_action_just_pressed("Right"):
 		if right.is_colliding() and not on_cooldown:
 			sprite.rotation_degrees = 90
 			self.position.x += 64
 			set_cooldown()
-
+			if GlobalVars.current_direction == "RIGHT":
+				if GlobalVars.current_activity == "MOVE" or GlobalVars.current_activity == "PROCEED":
+					get_parent().hurt()
+			elif GlobalVars.current_direction == "DOWN" or (
+			GlobalVars.current_direction == "LEFT") or (
+			GlobalVars.current_direction == "UP"):
+				if GlobalVars.current_activity == "DO NOT ADVANCE" or GlobalVars.current_activity == "DO NOT GO":
+					get_parent().hurt()
 func set_cooldown():
 	on_cooldown = true
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.2).timeout
 	on_cooldown = false

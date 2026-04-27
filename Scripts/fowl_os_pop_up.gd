@@ -1,7 +1,7 @@
 extends Node2D
 
 const PROGRAM_LOAD_SCREEN = preload("uid://bbyvgnoa7o663")
-const ENDING = preload("uid://baokcofcyigy6")
+var ENDING = load("uid://baokcofcyigy6")
 
 @onready var incorrect: Sprite2D = $Incorrect
 @onready var password: LineEdit = $Password
@@ -9,6 +9,9 @@ const ENDING = preload("uid://baokcofcyigy6")
 
 var entered_password : String
 var entered_user : String = "FowlSystems"
+
+func _ready() -> void:
+	Sfx.click.play()
 
 func _on_enter_pressed() -> void:
 	if entered_password == "AMVZCWF" and entered_user == "FowlSystems":
@@ -24,9 +27,11 @@ func _on_enter_pressed() -> void:
 		await loadScreen.fill_up()
 		get_tree().change_scene_to_packed(ENDING)
 	else:
+		Sfx.error.play()
 		incorrect.visible = true
 
 func _on_cancel_pressed() -> void:
+	Sfx.click.play()
 	get_tree().paused = false
 	queue_free()
 

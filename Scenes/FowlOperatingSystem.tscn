@@ -93,9 +93,9 @@ mouse_filter = 2
 
 [node name="PW1" type="RichTextLabel" parent="." unique_id=326004494]
 visible = false
-offset_left = 139.0
+offset_left = 331.0
 offset_top = 334.0
-offset_right = 354.0
+offset_right = 546.00006
 offset_bottom = 385.0
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 37
@@ -107,9 +107,9 @@ vertical_alignment = 1
 
 [node name="PW2" type="RichTextLabel" parent="." unique_id=684328154]
 visible = false
-offset_left = 531.0
+offset_left = 723.0
 offset_top = 334.0
-offset_right = 746.0
+offset_right = 938.00006
 offset_bottom = 385.0
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 37

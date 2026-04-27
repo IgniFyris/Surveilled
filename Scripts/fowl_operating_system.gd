@@ -29,7 +29,7 @@ func _ready() -> void:
 		fowl_download_complete.mouse_filter = Control.MOUSE_FILTER_STOP
 	if GlobalVars.ConnectionsCompleted == true:
 		fowl_connections.disabled = true
-		fowl_downloads.texture_normal = CONNECTIONS_INFECTED
+		fowl_connections.texture_normal = CONNECTIONS_INFECTED
 		fowl_connections_complete.mouse_filter = Control.MOUSE_FILTER_STOP
 	
 func _process(_delta: float) -> void:

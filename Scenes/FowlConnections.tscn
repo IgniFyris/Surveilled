@@ -3,6 +3,13 @@
 [ext_resource type="Script" uid="uid://cnujx2djk2opd" path="res://Scripts/fowl_connections.gd" id="1_lntt3"]
 [ext_resource type="FontFile" uid="uid://ptm1ayrjl0g4" path="res://Assets/Fonts/Courier Prime Code.ttf" id="2_lhn3t"]
 [ext_resource type="PackedScene" uid="uid://bfjgj6homclxp" path="res://Scenes/player.tscn" id="3_jxgge"]
+[ext_resource type="Material" uid="uid://cxr7ihe8nn4hv" path="res://addons/crt_shader/ShaderScreen.material" id="4_jgfgk"]
+
+[sub_resource type="Curve2D" id="Curve2D_jxgge"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 309, 170, 0, 0, 0, 0, 301, -182, 0, 0, 0, 0, -306, -182, 0, 0, 0, 0, -310, 183, 0, 0, 0, 0, 307, 180)
+}
+point_count = 5
 
 [node name="FowlConnections" type="Node2D" unique_id=1538851253]
 script = ExtResource("1_lntt3")
@@ -24,16 +31,6 @@ color = Color(1, 0.6138314, 0.9847918, 1)
 hue_variation_min = 1.0
 hue_variation_max = 1.0
 
-[node name="HurtFlash" type="ColorRect" parent="." unique_id=21026725]
-modulate = Color(1, 1, 1, 0)
-z_index = 1
-offset_left = -22.0
-offset_top = -17.0
-offset_right = 1301.0
-offset_bottom = 748.0
-color = Color(0.9996776, 0.14746779, 0.10515281, 1)
-metadata/_edit_lock_ = true
-
 [node name="ConnectionsText" type="RichTextLabel" parent="." unique_id=312846587]
 offset_left = 66.0
 offset_top = 137.33002
@@ -50,3 +47,68 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." unique_id=1741128796 instance=ExtResource("3_jxgge")]
 position = Vector2(607, 376)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1830576]
+zoom = Vector2(2.245, 2.245)
+
+[node name="Path2D" type="Path2D" parent="Player" unique_id=7206469]
+position = Vector2(0.033935547, -0.060272217)
+scale = Vector2(1.0678514, 1.1205479)
+curve = SubResource("Curve2D_jxgge")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D" unique_id=1146519065]
+position = Vector2(308.1254, 131.51796)
+rotation = -1.5935197
+progress = 38.5
+
+[node name="Marker2D" type="Marker2D" parent="Player/Path2D/PathFollow2D" unique_id=416997893]
+gizmo_extents = 13.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Player" unique_id=1945362300]
+
+[node name="InfectedCounter" type="RichTextLabel" parent="Player/CanvasLayer" unique_id=263160848]
+offset_left = 12.0
+offset_top = -11.0
+offset_right = 322.0
+offset_bottom = 85.0
+theme_override_font_sizes/normal_font_size = 70
+text = "0/100"
+fit_content = true
+scroll_active = false
+
+[node name="Shader" type="ColorRect" parent="Player/CanvasLayer" unique_id=1704380142]
+z_index = 50
+material = ExtResource("4_jgfgk")
+offset_left = -19.0
+offset_top = -19.0
+offset_right = 1315.0
+offset_bottom = 738.0
+mouse_filter = 2
+color = Color(0.49268818, 0.24788651, 0.548003, 1)
+metadata/_edit_lock_ = true
+
+[node name="HurtFlash" type="ColorRect" parent="Player/CanvasLayer" unique_id=21026725]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+offset_left = -22.0
+offset_top = -17.0
+offset_right = 1301.0
+offset_bottom = 748.0
+mouse_filter = 2
+color = Color(0.9996776, 0.14746779, 0.10515281, 1)
+metadata/_edit_lock_ = true
+
+[node name="Nodes" type="Node2D" parent="." unique_id=1895898117]
+
+[node name="Antiviruses" type="Node2D" parent="." unique_id=269780211]
+
+[node name="ChangeCommandTimer" type="Timer" parent="." unique_id=1190259534]
+wait_time = 10.0
+one_shot = true
+
+[node name="EnemySpawn" type="Timer" parent="." unique_id=1812304467]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="ChangeCommandTimer" to="." method="_on_change_command_timer_timeout"]
+[connection signal="timeout" from="EnemySpawn" to="." method="_on_enemy_spawn_timeout"]

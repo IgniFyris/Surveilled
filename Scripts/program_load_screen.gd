@@ -10,10 +10,16 @@ const DOWNLOADS_UNDER = preload("uid://cq0k2f4f1qtqn")
 const DOWNLOADS_PROGRESS = preload("uid://bpw0g0f54y35v")
 
 func _ready() -> void:
-	get_parent().mouse_particles.visible = false
+	GlobalVars.num_of_infected_nodes = 0
+	GlobalVars.num_of_nodes = 0
+	if get_parent() is not CanvasLayer:
+		get_parent().mouse_particles.visible = false
+	else:
+		get_parent().get_parent().get_parent().mouse_particles.visible = false
 	get_parent().set_process_input(false)
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	fill_up()
+	Sfx.reboot.play()
 	
 func text_change():
 	screen_text.text = "LOADING"
@@ -43,4 +49,6 @@ func fill_up():
 		await get_tree().create_timer(0.03).timeout
 
 	screen_text.text = "LOAD COMPLETE!"
+	Sfx.reboot.stop()
+	Sfx.load_done.play()
 	await get_tree().create_timer(2.0).timeout

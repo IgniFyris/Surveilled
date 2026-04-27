@@ -18,13 +18,15 @@ color = Color(0, 0, 0, 1)
 
 [node name="SplashScreenWarning" type="RichTextLabel" parent="." unique_id=203376812]
 layout_mode = 0
-offset_top = 159.0
-offset_right = 1178.8018
-offset_bottom = 655.7741
+offset_left = -4.9999995
+offset_top = 95.0
+offset_right = 1173.8018
+offset_bottom = 591.7741
 scale = Vector2(1.085, 1.085)
 theme_override_font_sizes/normal_font_size = 79
 bbcode_enabled = true
-text = "THIS GAME CONTAINS
-[shake] FLASHING LIGHTS [/shake]. 
+text = "THIS GAME CONTAINS MINOR [shake]HORROR THEMES[/shake] AND 
+[shake] FLASHING LIGHTS. [/shake]
 DISCRETION IS ADVISED."
 horizontal_alignment = 1
+vertical_alignment = 1

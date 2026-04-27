@@ -4,11 +4,14 @@ extends Node2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func com_line_text_display(comp_text : String, speed : float):
+	Sfx.binary.play()
 	var text_array = comp_text.rsplit()
 	
 	for character in text_array:
 		com_line.text = com_line.text + character
 		await get_tree().create_timer(speed).timeout
+		
+	Sfx.binary.stop()
 
 func enter():
 	animation_player.play("Enter")

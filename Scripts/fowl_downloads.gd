@@ -6,7 +6,7 @@ const FOLDERS = preload("uid://ddpqcx5on4mwj")
 const ENDING_INDICATOR = preload("uid://dtqk5xa41tlcm")
 const PROGRAM_LOAD_SCREEN = preload("uid://bbyvgnoa7o663")
 const FOWL_DOWNLOADS = preload("uid://ceoqbli1r6u2d")
-const FOWL_OPERATING_SYSTEM = preload("uid://chkn066pqicwg")
+var FOWL_OPERATING_SYSTEM = load("uid://chkn066pqicwg")
 
 @onready var mouse_particles: CPUParticles2D = $MouseParticles
 @onready var downloads_text: RichTextLabel = $DownloadsText
@@ -33,6 +33,7 @@ var spawnFolderAdder = 0.05
 var chaosTimeAdder = 1 
 
 func _ready() -> void:
+	Music.tense.volume_db = 0
 	flash.modulate.a = 0
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	set_process_input(false)
@@ -42,6 +43,8 @@ func _ready() -> void:
 LMB TO DELETE", downloads_text, 0.08, 2.0, true)
 	await comp_text_display("
 RMB TO UPLOAD", downloads_text, 0.08, 2.0, false)
+
+	Music.tense.play()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	set_process_input(true)
 	set_process(true)
@@ -65,9 +68,11 @@ RMB TO UPLOAD", downloads_text, 0.08, 2.0, false)
 func _process(_delta: float) -> void:
 	mouse_particles.position = get_global_mouse_position()
 	var correctActionsString = str(correctActions)
-	correct_counter.text = correctActionsString + "/75"
+	correct_counter.text = correctActionsString + "/65"
 	
-	if correctActions == 5:
+	if correctActions == 65:
+		Music.tense.stop()
+		Sfx.success.play()
 		GlobalVars.DownloadsCompleted = true
 		mouse_particles.visible = false
 		foldersObjArray.clear()
@@ -100,6 +105,8 @@ func _process(_delta: float) -> void:
 		await loadScreen.fill_up()
 		get_tree().change_scene_to_packed(FOWL_OPERATING_SYSTEM)
 	elif lives == 0:
+		Music.tense.stop()
+		Sfx.detected.play()
 		mouse_particles.visible = false
 		foldersObjArray.clear()
 		if folders.get_child_count() > 0:
@@ -145,6 +152,7 @@ func _input(_event: InputEvent) -> void:
 		pressed = false
 	
 func comp_text_display(comp_text : String, comp_text_container : RichTextLabel, speed : float, wait_time : float, sustain : bool):
+	Sfx.binary.play()
 	var text_array = comp_text.rsplit()
 	
 	for character in text_array:
@@ -154,6 +162,7 @@ func comp_text_display(comp_text : String, comp_text_container : RichTextLabel, 
 		elif pressed == false:
 			await get_tree().create_timer(speed).timeout
 		
+	Sfx.binary.stop()
 	await get_tree().create_timer(wait_time).timeout
 	
 	if sustain == false:
@@ -164,6 +173,7 @@ func choose_random():
 	GlobalVars.current_color = ColorOptions[randi_range(0, 2)]
 	
 func hurt():
+	Sfx.hurt.play()
 	hurt_flash.modulate.a = 1
 	create_tween().tween_property(hurt_flash, "modulate:a", 0, 0.5).set_ease(Tween.EASE_IN_OUT)
 
@@ -174,6 +184,7 @@ func _on_change_command_timer_timeout() -> void:
 		for folder in folders.get_children():
 			folder.queue_free()
 	flash.modulate.a = 1
+	Sfx.glitch.play()
 	create_tween().tween_property(flash, "modulate:a", 0, 0.5).set_ease(Tween.EASE_IN_OUT)
 	cmdLine.com_line.text = ""
 	choose_random()

@@ -18,6 +18,8 @@ boot_splash/bg_color=Color(0, 0, 0, 1)
 [autoload]
 
 GlobalVars="*uid://batyttkba1pwp"
+Sfx="*uid://be1ts27hu6rl"
+Music="*uid://dvruot8g66ki0"
 
 [display]
 

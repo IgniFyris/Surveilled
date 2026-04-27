@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dvruot8g66ki0"]
+
+[ext_resource type="AudioStream" uid="uid://ca2fnalgrdttf" path="res://Assets/Audio/Music/ebunny-hacking-the-system-loop-366823.mp3" id="1_476t3"]
+[ext_resource type="Script" uid="uid://jqor0jb3l6ot" path="res://Scripts/music.gd" id="1_vi5kw"]
+[ext_resource type="AudioStream" uid="uid://cq44fnadhriab" path="res://Assets/Audio/Music/sonican-ticking-time-mission-one-loop-228700.mp3" id="2_vi5kw"]
+[ext_resource type="AudioStream" uid="uid://bqtdph2vys08n" path="res://Assets/Audio/Music/lunemare-creepy-511957.mp3" id="3_timup"]
+[ext_resource type="AudioStream" uid="uid://sstklhhh717y" path="res://Assets/Audio/Music/freesound_community-creepy-distortion-29539.mp3" id="5_timup"]
+
+[node name="Music" type="Node" unique_id=1506308473]
+script = ExtResource("1_vi5kw")
+
+[node name="Tenser" type="AudioStreamPlayer" parent="." unique_id=717499563]
+stream = ExtResource("1_476t3")
+volume_db = -8.583
+
+[node name="Tense" type="AudioStreamPlayer" parent="." unique_id=262934093]
+stream = ExtResource("2_vi5kw")
+volume_db = -72.601
+
+[node name="Finale" type="AudioStreamPlayer" parent="." unique_id=1587530495]
+stream = ExtResource("3_timup")
+
+[node name="Buzz" type="AudioStreamPlayer" parent="." unique_id=1758482303]
+process_mode = 3
+stream = ExtResource("5_timup")
+
+[connection signal="finished" from="Tenser" to="." method="_on_tenser_finished"]
+[connection signal="finished" from="Tense" to="." method="_on_tense_finished"]
+[connection signal="finished" from="Finale" to="." method="_on_finale_finished"]
+[connection signal="finished" from="Buzz" to="." method="_on_buzz_finished"]

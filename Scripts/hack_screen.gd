@@ -46,6 +46,7 @@ func _input(_event: InputEvent) -> void:
 		get_tree().change_scene_to_packed(TUTORIAL)
 
 func _ready() -> void:
+	Sfx.binary.play()
 	set_process_input(false)
 	comp_text_display(text, comp_screen, 0.01)
 
@@ -59,4 +60,5 @@ func comp_text_display(comp_text : String, comp_text_container : RichTextLabel, 
 	hack_finished.emit()
 
 func _on_hack_finished() -> void:
+	Sfx.binary.stop()
 	set_process_input(true)

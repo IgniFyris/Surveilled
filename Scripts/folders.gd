@@ -28,12 +28,14 @@ func _input(_event: InputEvent) -> void:
 func input_function(clr : String):
 	if hovering:
 		if Input.is_action_just_pressed("Click") and GlobalVars.current_color == clr and GlobalVars.current_action == "UPLOAD":
+			Sfx.correct.play()
 			hover_area.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			var tw = create_tween().tween_property(sprites, "scale", Vector2(0, 0), 0.05)
 			get_parent().get_parent().correctActions += 1
 			await tw.finished
 			remove()
 		elif Input.is_action_just_pressed("RightClick") and GlobalVars.current_color == clr and GlobalVars.current_action == "DELETE":
+			Sfx.correct.play()
 			hover_area.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			var tw = create_tween().tween_property(sprites, "scale", Vector2(0, 0), 0.05)
 			get_parent().get_parent().correctActions += 1
