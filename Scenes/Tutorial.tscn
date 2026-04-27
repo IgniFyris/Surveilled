@@ -41,3 +41,13 @@ offset_bottom = 347.0
 theme_override_fonts/normal_font = ExtResource("3_uo1fs")
 theme_override_font_sizes/normal_font_size = 62
 horizontal_alignment = 1
+
+[node name="ContinueIndicator" type="RichTextLabel" parent="." unique_id=2058322555]
+visible = false
+offset_left = 1117.0
+offset_top = 675.0
+offset_right = 1317.0
+offset_bottom = 715.0
+bbcode_enabled = true
+text = "[i] Click to continue...[/i]"
+fit_content = true

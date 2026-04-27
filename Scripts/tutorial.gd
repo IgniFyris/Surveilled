@@ -9,6 +9,7 @@ const FOWL_OPERATING_SYSTEM = preload("uid://chkn066pqicwg")
 
 @onready var mouse_particles: CPUParticles2D = $MouseParticles
 @onready var tutorial_text: RichTextLabel = $TutorialText
+@onready var continue_indicator: RichTextLabel = $ContinueIndicator
 
 var cmdLine
 var pressed = false
@@ -103,9 +104,14 @@ func comp_text_display(comp_text : String, comp_text_container : RichTextLabel, 
 			while frames < (speed*60):
 				if pressed == true:
 					comp_text_container.text = comp_text
+					break
 				await get_tree().physics_frame
 				frames+=1
+	
+	continue_indicator.visible = true
 		
 	Sfx.blrrr.stop()
 	await clicked
 	await get_tree().create_timer(0.1).timeout
+	comp_text_container.text = ""
+	continue_indicator.visible = false
