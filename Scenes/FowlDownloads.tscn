@@ -92,6 +92,16 @@ one_shot = true
 
 [node name="Folders" type="Node2D" parent="." unique_id=1945949264]
 
+[node name="ContinueIndicator" type="RichTextLabel" parent="." unique_id=672265298]
+visible = false
+offset_left = 1117.0
+offset_top = 675.0
+offset_right = 1317.0
+offset_bottom = 715.0
+bbcode_enabled = true
+text = "[i] Click to continue...[/i]"
+fit_content = true
+
 [connection signal="timeout" from="ChangeCommandTimer" to="." method="_on_change_command_timer_timeout"]
 [connection signal="timeout" from="SpawnFolderTimer" to="." method="_on_spawn_folder_timer_timeout"]
 [connection signal="timeout" from="ChaosIncreaser" to="." method="_on_chaos_increaser_timeout"]

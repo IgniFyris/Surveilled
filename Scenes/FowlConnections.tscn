@@ -110,5 +110,15 @@ one_shot = true
 wait_time = 5.0
 one_shot = true
 
+[node name="ContinueIndicator" type="RichTextLabel" parent="." unique_id=2112971728]
+visible = false
+offset_left = 1117.0
+offset_top = 675.0
+offset_right = 1317.0
+offset_bottom = 715.0
+bbcode_enabled = true
+text = "[i] Click to continue...[/i]"
+fit_content = true
+
 [connection signal="timeout" from="ChangeCommandTimer" to="." method="_on_change_command_timer_timeout"]
 [connection signal="timeout" from="EnemySpawn" to="." method="_on_enemy_spawn_timeout"]

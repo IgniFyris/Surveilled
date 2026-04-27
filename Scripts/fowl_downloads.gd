@@ -1,5 +1,7 @@
 extends Node2D
 
+signal clicked
+
 const MOUSE_CLICK_PARTICLES = preload("uid://d3kcljcgixdmc")
 const COMMAND_LINE = preload("uid://bpgfgl66acbkf")
 const FOLDERS = preload("uid://ddpqcx5on4mwj")
@@ -14,6 +16,7 @@ var FOWL_OPERATING_SYSTEM = load("uid://chkn066pqicwg")
 @onready var hurt_flash: ColorRect = $HurtFlash
 @onready var folders: Node2D = $Folders
 @onready var correct_counter: RichTextLabel = $CorrectCounter
+@onready var continue_indicator: RichTextLabel = $ContinueIndicator
 
 @onready var change_command_timer: Timer = $ChangeCommandTimer
 @onready var spawn_folder_timer: Timer = $SpawnFolderTimer
@@ -21,6 +24,7 @@ var FOWL_OPERATING_SYSTEM = load("uid://chkn066pqicwg")
 
 var pressed = false
 var cmdLine
+var nextText
 var correctActions = 0
 var lives = 3
 
@@ -32,21 +36,22 @@ var adder = 0.2
 var spawnFolderAdder = 0.05
 var chaosTimeAdder = 1 
 
+var get_click = false
+
 func _ready() -> void:
 	Music.tense.volume_db = 0
 	flash.modulate.a = 0
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	set_process_input(false)
 	set_process(false)
-	await comp_text_display("[FOWL.OS FILE MANAGEMENT SECTOR]", downloads_text, 0.08, 2.0, true)
+	await comp_text_display("[FOWL.OS FILE MANAGEMENT SECTOR]", downloads_text, 0.08, 2.0, true, false)
 	await comp_text_display("
-LMB TO DELETE", downloads_text, 0.08, 2.0, true)
+LMB TO DELETE", downloads_text, 0.08, 2.0, true, nextText)
 	await comp_text_display("
-RMB TO UPLOAD", downloads_text, 0.08, 2.0, false)
+RMB TO UPLOAD", downloads_text, 0.08, 2.0, false, nextText)
 
 	Music.tense.play()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	set_process_input(true)
+	get_click = true
 	set_process(true)
 	
 	cmdLine = COMMAND_LINE.instantiate()
@@ -141,32 +146,60 @@ func _process(_delta: float) -> void:
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Click"):
+		clicked.emit()
 		pressed = true
-		var clickParticles = MOUSE_CLICK_PARTICLES.instantiate()
-		clickParticles.global_position = get_global_mouse_position()
-		add_child(clickParticles)
-		clickParticles.restart()
-		await clickParticles.finished
-		clickParticles.queue_free()
+		if get_click == true:
+			var clickParticles = MOUSE_CLICK_PARTICLES.instantiate()
+			clickParticles.global_position = get_global_mouse_position()
+			add_child(clickParticles)
+			clickParticles.restart()
+			await clickParticles.finished
+			clickParticles.queue_free()
 	else:
 		pressed = false
 	
-func comp_text_display(comp_text : String, comp_text_container : RichTextLabel, speed : float, wait_time : float, sustain : bool):
+func comp_text_display(comp_text : String, comp_text_container : RichTextLabel, speed : float, wait_time : float, sustain : bool, prevText):
+	continue_indicator.visible = true
+	continue_indicator.text = "[i] Click to Skip [/i]"
 	Sfx.binary.play()
 	var text_array = comp_text.rsplit()
+	
+	if prevText is not bool:
+		comp_text_container.text = prevText
 	
 	for character in text_array:
 		comp_text_container.text = comp_text_container.text + character
 		if pressed == true:
-			await get_tree().create_timer(speed/2).timeout
+			if prevText is not bool:
+				comp_text_container.text = prevText + comp_text
+			else:
+				comp_text_container.text = comp_text
+			break
 		elif pressed == false:
-			await get_tree().create_timer(speed).timeout
-		
+			var frames = 0
+			while frames < (speed*60):
+				if pressed == true:
+					if prevText is not bool:
+						comp_text_container.text = prevText + comp_text
+					else:
+						comp_text_container.text = comp_text
+					break
+				await get_tree().physics_frame
+				frames+=1
+	
+	continue_indicator.text = "[i] Click to Continue [/i]"
 	Sfx.binary.stop()
-	await get_tree().create_timer(wait_time).timeout
+	
+	await clicked
+	await get_tree().create_timer(0.1).timeout
 	
 	if sustain == false:
+		nextText = ""
 		comp_text_container.text = ""
+	else:
+		nextText = comp_text_container.text
+	
+	continue_indicator.visible = false
 		
 func choose_random():
 	GlobalVars.current_action = ActionOptions[randi_range(0, 1)]

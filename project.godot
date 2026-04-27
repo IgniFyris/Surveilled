@@ -15,6 +15,10 @@ run/main_scene="uid://cdyqfgap4cbl5"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 
+[audio]
+
+buses/default_bus_layout="uid://6ykbkqu7bq5j"
+
 [autoload]
 
 GlobalVars="*uid://batyttkba1pwp"

@@ -22,49 +22,63 @@ script = ExtResource("1_tcyhk")
 
 [node name="Hurt" type="AudioStreamPlayer" parent="." unique_id=195848788]
 stream = ExtResource("2_14lcj")
+bus = &"SFX"
 
 [node name="Ticktock" type="AudioStreamPlayer" parent="." unique_id=1066058703]
 stream = ExtResource("3_em1ey")
+bus = &"SFX"
 
 [node name="Binary" type="AudioStreamPlayer" parent="." unique_id=919448983]
 stream = ExtResource("4_c4usm")
 volume_db = 15.505
+bus = &"SFX"
 
 [node name="Click" type="AudioStreamPlayer" parent="." unique_id=411842830]
 stream = ExtResource("5_fpi71")
+bus = &"SFX"
 
 [node name="Boom" type="AudioStreamPlayer" parent="." unique_id=1965525738]
 stream = ExtResource("6_4l7hu")
+bus = &"SFX"
 
 [node name="Correct" type="AudioStreamPlayer" parent="." unique_id=1146579098]
 stream = ExtResource("7_c4usm")
+bus = &"SFX"
 
 [node name="Buzz" type="AudioStreamPlayer" parent="." unique_id=1508353331]
 stream = ExtResource("8_fpi71")
+bus = &"SFX"
 
 [node name="Reboot" type="AudioStreamPlayer" parent="." unique_id=258237510]
 stream = ExtResource("9_4l7hu")
+bus = &"SFX"
 
 [node name="LoadDone" type="AudioStreamPlayer" parent="." unique_id=28809421]
 stream = ExtResource("10_x4q8o")
+bus = &"SFX"
 
 [node name="Glitch" type="AudioStreamPlayer" parent="." unique_id=824067904]
 stream = ExtResource("11_x4q8o")
+bus = &"SFX"
 
 [node name="Success" type="AudioStreamPlayer" parent="." unique_id=331715502]
 stream = ExtResource("12_c006q")
+bus = &"SFX"
 
 [node name="Detected" type="AudioStreamPlayer" parent="." unique_id=1814629569]
 stream = ExtResource("13_ev7le")
 volume_db = -1.898
+bus = &"SFX"
 
 [node name="Error" type="AudioStreamPlayer" parent="." unique_id=1945377430]
 stream = ExtResource("14_ev7le")
 volume_db = -1.898
+bus = &"SFX"
 
 [node name="Blrrr" type="AudioStreamPlayer" parent="." unique_id=402361944]
 stream = ExtResource("15_3pe7i")
 volume_db = -10.755
+bus = &"SFX"
 
 [connection signal="finished" from="Ticktock" to="." method="_on_ticktock_finished"]
 [connection signal="finished" from="Binary" to="." method="_on_binary_finished"]

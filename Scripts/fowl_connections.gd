@@ -1,4 +1,7 @@
 extends Node2D
+
+signal clicked
+
 const MOUSE_CLICK_PARTICLES = preload("uid://d3kcljcgixdmc")
 const COMMAND_LINE = preload("uid://bpgfgl66acbkf")
 const NODE = preload("uid://ndxe7eglmwwi")
@@ -22,12 +25,15 @@ const ANTIVIRUS = preload("uid://cs1ajlh8idt7c")
 @onready var path_follow_2d: PathFollow2D = $Player/Path2D/PathFollow2D
 @onready var marker_2d: Marker2D = $Player/Path2D/PathFollow2D/Marker2D
 @onready var antiviruses: Node2D = $Antiviruses
+@onready var continue_indicator: RichTextLabel = $ContinueIndicator
 
 var pressed = false
 var cmdLine
 var lives = 3
 var adder = 0.5
 var enemy_time_adder = 0.2
+var nextText
+var get_click
 
 var num_of_nodes : int = 0
 var num_of_infected_nodes : int = 0
@@ -40,21 +46,21 @@ func _ready() -> void:
 	camera_2d.enabled = false
 	infected_counter.visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	set_process_input(false)
+	get_click = false
 	set_process(false)
-	await comp_text_display("[FOWL.OS CONNECTIONS SECTOR]", connections_text, 0.08, 2.0, true)
+	await comp_text_display("[FOWL.OS CONNECTIONS SECTOR]", connections_text, 0.08, 2.0, true, false)
 	await comp_text_display("
-INFECT ALL NODES", connections_text, 0.08, 2.0, true)
+INFECT ALL NODES", connections_text, 0.08, 2.0, true, nextText)
 	await comp_text_display("
-'WASD' TO MOVE", connections_text, 0.08, 2.0, true)
+'WASD' TO MOVE", connections_text, 0.08, 2.0, true, nextText)
 	await comp_text_display("
-'LMB' TO DESTROY ANTIVIRUSES", connections_text, 0.08, 2.0, false)
+'LMB' TO DESTROY ANTIVIRUSES", connections_text, 0.08, 2.0, false, nextText)
 	player.visible = true
 	camera_2d.enabled = true
 	infected_counter.visible = true
 	Music.tenser.play()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	set_process_input(true)
+	get_click = true
 	set_process(true)
 	
 	cmdLine = COMMAND_LINE.instantiate()
@@ -171,32 +177,60 @@ func _process(_delta: float) -> void:
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Click"):
+		clicked.emit()
 		pressed = true
-		var clickParticles = MOUSE_CLICK_PARTICLES.instantiate()
-		clickParticles.global_position = get_global_mouse_position()
-		add_child(clickParticles)
-		clickParticles.restart()
-		await clickParticles.finished
-		clickParticles.queue_free()
+		if get_click == true:
+			var clickParticles = MOUSE_CLICK_PARTICLES.instantiate()
+			clickParticles.global_position = get_global_mouse_position()
+			add_child(clickParticles)
+			clickParticles.restart()
+			await clickParticles.finished
+			clickParticles.queue_free()
 	else:
 		pressed = false
 	
-func comp_text_display(comp_text : String, comp_text_container : RichTextLabel, speed : float, wait_time : float, sustain : bool):
+func comp_text_display(comp_text : String, comp_text_container : RichTextLabel, speed : float, wait_time : float, sustain : bool, prevText):
+	continue_indicator.visible = true
+	continue_indicator.text = "[i] Click to Skip [/i]"
 	Sfx.binary.play()
 	var text_array = comp_text.rsplit()
+	
+	if prevText is not bool:
+		comp_text_container.text = prevText
 	
 	for character in text_array:
 		comp_text_container.text = comp_text_container.text + character
 		if pressed == true:
-			await get_tree().create_timer(speed/2).timeout
+			if prevText is not bool:
+				comp_text_container.text = prevText + comp_text
+			else:
+				comp_text_container.text = comp_text
+			break
 		elif pressed == false:
-			await get_tree().create_timer(speed).timeout
-		
+			var frames = 0
+			while frames < (speed*60):
+				if pressed == true:
+					if prevText is not bool:
+						comp_text_container.text = prevText + comp_text
+					else:
+						comp_text_container.text = comp_text
+					break
+				await get_tree().physics_frame
+				frames+=1
+	
+	continue_indicator.text = "[i] Click to Continue [/i]"
 	Sfx.binary.stop()
-	await get_tree().create_timer(wait_time).timeout
+	
+	await clicked
+	await get_tree().create_timer(0.1).timeout
 	
 	if sustain == false:
+		nextText = ""
 		comp_text_container.text = ""
+	else:
+		nextText = comp_text_container.text
+	
+	continue_indicator.visible = false
 
 func _on_change_command_timer_timeout() -> void:
 	player.set_process_input(false)
@@ -225,3 +259,6 @@ func _on_enemy_spawn_timeout() -> void:
 	antivirus.global_position = marker_2d.global_position
 	antiviruses.add_child(antivirus)
 	enemy_spawn.start()
+	
+	await antivirus.tree_exited
+	Sfx.boom.play()

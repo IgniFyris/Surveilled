@@ -11,7 +11,7 @@ script = ExtResource("1_vi5kw")
 
 [node name="Tenser" type="AudioStreamPlayer" parent="." unique_id=717499563]
 stream = ExtResource("1_476t3")
-volume_db = -8.583
+volume_db = -18.028
 
 [node name="Tense" type="AudioStreamPlayer" parent="." unique_id=262934093]
 stream = ExtResource("2_vi5kw")

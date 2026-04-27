@@ -90,8 +90,9 @@ func continue_tut():
 	get_tree().change_scene_to_packed(FOWL_OPERATING_SYSTEM)
 	
 func comp_text_display(comp_text : String, comp_text_container : RichTextLabel, speed : float):
+	continue_indicator.visible = true
+	continue_indicator.text = "[i] Click to Skip [/i]"
 	Sfx.blrrr.play()
-	nextText = comp_text_container.text
 	var text_array = comp_text.rsplit()
 	
 	for character in text_array:
@@ -108,7 +109,7 @@ func comp_text_display(comp_text : String, comp_text_container : RichTextLabel, 
 				await get_tree().physics_frame
 				frames+=1
 	
-	continue_indicator.visible = true
+	continue_indicator.text = "[i] Click to Continue [/i]"
 		
 	Sfx.blrrr.stop()
 	await clicked
