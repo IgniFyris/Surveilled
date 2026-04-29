@@ -43,6 +43,7 @@ var DirectionOptions = ["UP", "DOWN", "LEFT", "RIGHT"]
 
 func _ready() -> void:
 	player.visible = false
+	player.set_process_input(false)
 	camera_2d.enabled = false
 	infected_counter.visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -56,6 +57,7 @@ INFECT ALL NODES", connections_text, 0.08, 2.0, true, nextText)
 	await comp_text_display("
 'LMB' TO DESTROY ANTIVIRUSES", connections_text, 0.08, 2.0, false, nextText)
 	player.visible = true
+	player.set_process_input(true)
 	camera_2d.enabled = true
 	infected_counter.visible = true
 	Music.tenser.play()
@@ -112,6 +114,7 @@ func _process(_delta: float) -> void:
 	infected_counter.text = str(GlobalVars.num_of_infected_nodes) + "/" + str(nodes.get_child_count())
 	
 	if GlobalVars.num_of_infected_nodes == nodes.get_child_count():
+		player.set_process_input(false)
 		Music.tenser.stop()
 		Sfx.success.play()
 		cmdLine.com_line.text = ""
@@ -144,6 +147,7 @@ func _process(_delta: float) -> void:
 		await loadScreen.fill_up()
 		get_tree().change_scene_to_packed(FOWL_OPERATING_SYSTEM)
 	elif lives <= 0:
+		player.set_process_input(false)
 		Music.tenser.stop()
 		Sfx.detected.play()
 		cmdLine.com_line.text = ""

@@ -79,8 +79,10 @@ func disable_programs():
 
 func enable_programs():
 	fowl_main_program.disabled = false
-	fowl_connections.disabled = false
-	fowl_downloads.disabled = false
+	if GlobalVars.ConnectionsCompleted != true:
+		fowl_connections.disabled = false
+	if GlobalVars.DownloadsCompleted != true:
+		fowl_downloads.disabled = false
 
 func _on_fowl_download_complete_mouse_entered() -> void:
 	pw_1.visible = true
